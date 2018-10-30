@@ -1,8 +1,5 @@
 # Fingerprintjs2
 
-[![](https://travis-ci.org/Valve/fingerprintjs2.svg?branch=master)](https://travis-ci.org/Valve/fingerprintjs2)
-[![](https://badges.gitter.im/Valve/fingerprintjs2.svg)](https://gitter.im/Valve/fingerprintjs2)
-
 
 Original fingerprintjs library was developed in 2012, it's now impossible to evolve it
 without breaking backwards compatibilty, so this project will be where
@@ -24,14 +21,6 @@ This project uses `semver`.
 
 ### Usage
 
-```js
-new Fingerprint2().get(function(result, components){
-  console.log(result); //a hash, representing your device fingerprint
-  console.log(components); // an array of FP components
-});
-```
-
-#### You can pass an object with options (all of which are optional):
 
 ```js
 var options = {swfPath: '/assets/FontList.swf', excludeUserAgent: true};
@@ -65,72 +54,6 @@ If you don't, the library will skip the Flash part entirely.
 To ensure consistent fingerprints when users rotate their mobile
 devices.
 
-
-##### All fingerprinting sources are enabled by default, i.e. you don't need to explicitly configure the library to include them.
-
-```js
-new Fingerprint2().get(function(result, components){
-  // this will use all available fingerprinting sources
-  console.log(result);
-  // components is an array of all fingerprinting components used
-  console.log(components);
-});
-```
-
-#### `userDefinedFonts` option
-
-While hundreds of the most popular fonts are included in the extended font list, you may wish to increase the entropy of the font fingerprint by specifying the `userDefinedFonts` option as an array of font names.
-
-```js
-new Fingerprint2({
-  userDefinedFonts: ["Nimbus Mono", "Junicode", "Presto"]
-}).get(function(result, components){
-  console.log(result);
-});
-```
-
-#### `preprocessor` option
-
-Function that is called with each component value that may be used to modify component values before computing the fingerprint.
-For example: strip browser version from user agent.
-
-```js
-new Fingerprint2({
-  preprocessor: function(key, value){
-    if(key == "user_agent"){
-      var parser = new UAParser(value); // https://github.com/faisalman/ua-parser-js
-      var userAgentMinusVersion = parser.getOS().name + ' ' + parser.getBrowser().name;
-      return userAgentMinusVersion;
-    }
-  }
-}).get(function(result, components){
-  //user_agent component will contain string processed with our function. For example: Windows Chrome
-  console.log(result, components);
-});
-```
-
-#### View the fingerprint locally
-
-You can view your browser fingerprint locally by starting a webserver and viewing the `index.html` page.
-Loading `index.html` from the filesystem won't work due to Flash's ExternalInterface security restrictions.
-
-To start a web server you can try using one of the following:
-
-* Ruby 1.9.2+
-
-    `ruby -run -e httpd . -p 8080`
-
-* Python 2.x
-
-    `python -m SimpleHTTPServer 8080`
-
-* Python 3.x
-
-    `python -m http.server 8080`
-
-* PHP 5.4+
-
-    `php -S 0.0.0.0:8080`
 
 
 ### List of fingerprinting sources
