@@ -20,35 +20,6 @@ fingerprintjs.
 
 This project uses `semver`.
 
-### Installation
-
-#### CDN:
-```
-//cdn.jsdelivr.net/npm/fingerprintjs2@<VERSION>/dist/fingerprint2.min.js
-```
-or
-
-```
-https://cdnjs.com/libraries/fingerprintjs2
-```
-
-#### Bower
-
-```
-bower install fingerprintjs2
-```
-
-#### NPM
-
-```
-npm install fingerprintjs2
-```
-
-### Yarn
-
-```
-yarn add fingerprintjs2
-```
 
 
 ### Usage
