@@ -1,4 +1,4 @@
-# Fingerprintjs2
+# Fingerprintjs2.1
 
 
 Original fingerprintjs library was developed in 2012, it's now impossible to evolve it
